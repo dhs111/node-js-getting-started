@@ -24,5 +24,5 @@ var app = express();
 	app.get('/bc.jpg', function (req, res) {
 		res.sendFile(__dirname + '/bc.jpg');          
 	})
-  //app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+  app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
   
