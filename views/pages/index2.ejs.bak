@@ -1,64 +1,228 @@
 <!DOCTYPE html>
-<html>
 <head>
-  <%- include ("../partials/header.ejs") %>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style type="text/css">
+//html{height:100%;}
+* html body{height:100%;}
+
+//body{margin:0;padding:0;font-family:Arial,sans-serif;min-height:100%;}
+//div.center-block{margin:10px;height:60px;border:1px solid #d3d6d9;transition: all .15s linear;}
+div.center-block{display:flex;align-items:center;justify-content:center;}
+//div.center-block:hover{height:12px;}
+div.center-block div{width:300px;height:50px;line-height:8px;font-size:24px;text-align:center;background-color:#f3dc80;transition: all .15s linear;}
+//div.center-block div:hover{height:80px;line-height:80px;cursor:pointer;}
+
+div.center-block1{display:flex;align-items:center;justify-content:center;}
+
+:root {
+  --y1 : 20px;
+  --x1 : -100px;
+  --dx : 0px;
+  --dy : 0px;  
+  --bkclr:#ffffff;
+  --unitclr:#0000ff;
+  --unit_fsize : 20px;
+  --fsize1 : 20px;
+  --fsize2 : 16px;  
+<!--
+  --bkclr:#316171;
+-->  
+}
+
+#DP_TIME{
+	position:Absolute;
+	width:300px;
+	height:30px;
+	z-index:1;
+	left: 50%-150px;
+	top: 55px;
+	background-position: center center;
+	background-color: #00C000;
+	font-size: 16px;
+	color: #000000;
+	line-height: 28px;
+}
+#DP_PACKET_CNT{
+	position:Absolute;
+	width:300px;
+	height:30px;
+	z-index:1;
+	left: 50%-150px;
+	top: 81px;
+	background-position: center center;
+	background-color: #00C000;
+	font-size: 16px;
+	color: #000000;
+	line-height: 28px;
+}
+
+#DP{
+	position:relative;
+	width:0px;
+	height:60px;
+	z-index:1;
+	left: 91px;
+	top: 182px;
+	background-position: center center;
+	background-color: #000000;
+	font-size: 16px;
+	color: #FF0000;
+	line-height: 22px;
+	text-align:center;
+}
+
+
+
+#DP01 {
+	position:Absolute;
+	width:200Px;
+	height:30px;
+	z-index:2;
+	left : -40px;
+	top: -100px;
+	background-position: center center;
+	background-color: var(--bkclr);
+	font-size: var(--unit_fsize);
+	color: var(--unitclr);
+	line-height: 3Px;
+	text-align:center;
+}
+#DP02  {
+	position:Absolute;
+	width:200Px;
+	height:12px;
+	z-index:2;
+	left : -40px;
+	top: -50px;
+	background-position: center center;
+	background-color: var(--bkclr);
+	font-size: var(--unit_fsize);
+	color: var(--unitclr);
+	line-height: 12Px;
+	text-align:center;
+}
+
+#DP03  {
+	position:Absolute;
+	width:200Px;
+	height:12px;
+	z-index:2;
+	left : -40px;
+	top: 0px;
+	background-position: center center;
+	background-color: var(--bkclr);
+	font-size: var(--unit_fsize);
+	color: var(--unitclr);
+	line-height: 12Px;
+	text-align:center;
+}
+#DP04  {
+	position:Absolute;
+	width:200Px;
+	height:12px;
+	z-index:2;
+	left : -40Px;
+	top: 50px;
+	background-position: center center;
+	background-color: var(--bkclr);
+	font-size : var(--unit_fsize);
+	color: var(--unitclr);
+	line-height: 12Px;
+	text-align:center;
+}
+#DP05  {
+	position:Absolute;
+	width:200Px;
+	height:12px;
+	z-index:2;
+	left : -40px;
+	top: 100px;
+	background-position: center center;
+	background-color: var(--bkclr);
+	font-size: var(--unit_fsize);
+	color: var(--unitclr);
+	line-height: 12Px;
+	text-align:center;
+}
+#DP06  {
+	position:Absolute;
+	width:200Px;
+	height:12px;
+	z-index:2;
+	left : -40px;
+	top: 150px;
+	background-position: center center;
+	background-color: var(--bkclr);
+	font-size: var(--unit_fsize);
+	color: var(--unitclr);
+	line-height: 12Px;
+	text-align:center;
+}	
+#DP07  {
+	position:Absolute;
+	width:200Px;
+	height:12px;
+	z-index:2;
+	left : -40Px;
+	top: 200px;
+	background-position: center center;
+	background-color: var(--bkclr);
+	font-size : var(--unit_fsize);
+	color: var(--unitclr);
+	line-height: 12Px;
+	text-align:center;
+}
+#DP08 {
+	position:Absolute;
+	width:200Px;
+	height:12px;
+	z-index:2;
+	left : -40px;
+	top: 250px;
+	background-position: center center;
+	background-color: var(--bkclr);
+	font-size: var(--unit_fsize);
+	color: var(--unitclr);
+	line-height: 12Px;
+	text-align:center;
+}
+
+
+</style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
-
 <body>
+<div class="center-block"><div>
+  <p>Boiler</p>
 
-  <%- include ("../partials/nav.ejs") %>
 
-<div class="jumbotron text-center">
-  <div class="container">
-    <a href="/" class="lang-logo">
-      <img src="/lang-logo.png">
-    </a>
-    <h1>Getting Started on Heroku with Node.js</h1>
-    <p>This is a sample Node application deployed to Heroku. It's a reasonably simple app - but a good foundation for understanding how to get the most out of the Heroku platform.</p>
-    <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-nodejs"><span class="glyphicon glyphicon-flash"></span> Getting Started on Heroku with Node.js</a>
-    <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/node-js-getting-started"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>
-  </div>
-</div>
-<div class="container">
-  <div class="alert alert-info text-center" role="alert">
-    To deploy your own copy, and learn the fundamentals of the Heroku platform, head over to the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs" class="alert-link">Getting Started on Heroku with Node.js</a> tutorial.
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-info-sign"></span> How this *******sample app works</h3>
-      <ul>
-        <li>This app was deployed to Heroku, either using Git or by using <a href="https://github.com/heroku/node-js-getting-started">Heroku Button</a> on the repository.</li>
+<div id="DP">
+	<div id="DP01"><a href="http://netus.asuscomm.com:8889/bc.html">Status List 1</a></div>
+	<div id="DP02"><a href="http://netus.asuscomm.com:8889/bc-sa.html">Status List 2</a></div>
+	<div id="DP03"><a href="http://netus.asuscomm.com:8889/bc-sb.html">Day List</a></div>
+	<div id="DP04"><a href="http://netus.asuscomm.com:8889/bc-sc.html">Month List</a></div>
+	<div id="DP05"><a href="http://netus.asuscomm.com:8889/bc-sd.html">Parament List</a></div>
+	<div id="DP06"><a href="http://netus.asuscomm.com:8889/alarm_list.html">Alarm List</a></div>			
+<!-- 	<div id="DP07">CH05</div>	
+ 	<div id="DP08">CH06</div>	 	-->
+	
+ </div>	
 
-        <li>When Heroku received the source code, it fetched all the dependencies in the <a href="https://github.com/heroku/node-js-getting-started/blob/main/package.json">package.json</a>, creating a deployable slug.</li>
-        <li>The platform then spins up a dyno, a lightweight container that provides an isolated environment in which the slug can be mounted and executed.</li>
-        <li>You can scale your app, manage it, and deploy over <a href="https://addons.heroku.com/">150 add-on services</a>, from the Dashboard or CLI.</li>
-      </ul>
-    </div>
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-link"></span> Next Steps</h3>
-      <ul>
-        <li>If you are following the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">Getting Started</a> guide, then please head back to the tutorial and follow the next steps!</li>
-        <li>If you deployed this app by deploying the Heroku Button, then in a command line shell, run:</li>
-        <ul>
-          <li><code>git clone https://github.com/heroku/node-js-getting-started.git</code> - this will create a local copy of the source code for the app</li>
-          <li><code>cd node-js-getting-started</code> - change directory into the local source code repository</li>
-          <li><code>heroku git:remote -a &lt;your-app-name></code> - associate the Heroku app with the repository</li>
-          <li>You'll now be set up to run the app locally, or <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#push-local-changes">deploy changes</a> to Heroku</li>
-        </ul>
-      </ul>
-      <h3><span class="glyphicon glyphicon-link"></span> Helpful Links</h3>
-      <ul>
-        <li><a href="https://www.heroku.com/home">Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/">Heroku Dev Center</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">Getting Started on Heroku with Node.js</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/deploying-nodejs">Deploying Node Apps on Heroku</a></li>
-      </ul>
-    </div>
-  </div> <!-- row -->
-   <div class="alert alert-info text-center" role="alert">
-    Please do work through the Getting Started guide, even if you do know how to build such an application.  The guide covers the basics of working with Heroku, and will familiarize you with all the concepts you need in order to build and deploy your own apps.
+  <!--
+<p><img src="./bc-sa.jpg" style="display:block; margin:auto;" width="700" 	height="480" border="0" vspace="500" longdesc="my" /> </p>
+-->
+
+
+
+
+
+
+
+  
   </div>
+  
 </div>
 
 
