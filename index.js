@@ -1,11 +1,11 @@
-var http = require('http');
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 5000
 
-http
-  .createServer(function(req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.write('<h1>Hello Node</h1>');
-    res.end('<h1>Hello World</h1>');
-  })
-  .listen(3000);
+express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('pages/index'))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
-console.log('HTTP server is listening at port 3000.');
