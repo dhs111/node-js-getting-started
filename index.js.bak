@@ -7,8 +7,8 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index2'))
-	app.get('/bc.jpg', function (req, res) {
+	.get('/bc.jpg', function (req, res) {
 		res.sendFile(__dirname + '/bc.jpg');          
-	});  
+	})
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
